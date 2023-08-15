@@ -9,6 +9,7 @@ A place for all of my Cockroach Labs evangelism material
 
 ### Demos
 
-* Online Schema Changes
-  * [Primary Keys](online_schema_changes/primary_keys/README.md)
-  * [Foreign Keys](online_schema_changes/foreign_keys/README.md)
+* Operational Efficiency
+  * Online Schema Changes
+    * [Primary Keys](online_schema_changes/primary_keys/README.md)
+    * [Foreign Keys](online_schema_changes/foreign_keys/README.md)
