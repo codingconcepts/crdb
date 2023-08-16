@@ -9,6 +9,10 @@ A place for all of my Cockroach Labs evangelism material
 
 ### Demos
 
+* Architecture
+  * Ranges
+    * [Deep Dive](architecture/ranges/deep_dive/README.md)
+
 * Operational Efficiency
   * Online Schema Changes
     * [Primary Keys](online_schema_changes/primary_keys/README.md)
