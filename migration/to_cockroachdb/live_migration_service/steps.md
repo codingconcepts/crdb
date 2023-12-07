@@ -71,13 +71,7 @@ mysqldump -u root -p'password' -h 127.0.0.1 -P 3306 --no-data defaultdb > mysql_
 Start the application and tail the logs
 
 ``` sh
-cp go.* migration/to_cockroachdb/live_migration_service/app
-
-(cd migration/to_cockroachdb/live_migration_service/app && docker build -t app .)
-
-docker tag app:latest localhost:9090/app:latest
-docker push localhost:9090/app:latest
-kubectl apply -f manifests/app/deployment.yaml
+make deploy_app
 
 kubetail app
 ```
@@ -113,7 +107,7 @@ CREATE TABLE purchase (
 docker tag cockroachdb/molt-lms:latest localhost:9090/cockroachdb/molt-lms:latest
 docker push localhost:9090/cockroachdb/molt-lms:latest
 
-# Install the LMS into the cluster
+# Install the LMS into the cluster (just run install if offline)
 (cd helm-molt-lms && helm dependency update)
 
 (cd helm-molt-lms && helm install \
@@ -143,7 +137,31 @@ root:password@tcp(lms.lms.svc.cluster.local:9043)/defaultdb
 ``` sh
 kubectl apply -f manifests/app/deployment.yaml
 kubectl rollout restart deployment app
+
+kubetail app
 ```
+
+### LMS stuff
+
+<!-- Get the GTID (global transaction identifier) for transaction-based replication via cdc-sink:
+
+``` sh
+GTID=$(mysql -u root -p'password' -P 3306 -h 0.0.0.0 -e 'show master status' -s | tail | awk '{print $3}')
+
+echo $GTID
+```
+
+Start cdc-sink
+
+``` sh
+kubectl exec -it -n crdb cockroachdb-0 -- /cockroach/cockroach sql --insecure -e "CREATE DATABASE _cdc_sink"
+
+cdc-sink mylogical \
+  --sourceConn 'mysql://root:password@localhost:3306/defaultdb?sslmode=disable' \
+  --targetConn 'postgres://root@localhost:26257/defaultdb?sslmode=disable' \
+  --defaultGTIDSet $GTID \
+  --logFormat fluent
+``` -->
 
 Show rows coming over into cockroachDB
 
