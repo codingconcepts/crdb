@@ -15,3 +15,6 @@ A place for all of my public-facing Cockroach Labs evangelism material
   * Online Schema Changes
     * [Primary Keys](online_schema_changes/primary_keys/README.md)
     * [Foreign Keys](online_schema_changes/foreign_keys/README.md)
+
+* Resilience
+  * [Chaos Testing](resilience/chaos_testing/README.md)
