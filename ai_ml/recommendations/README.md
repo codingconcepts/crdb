@@ -45,7 +45,7 @@ CREATE TABLE "purchase_item" (
 );
 ```
 
-Generate data **PRE SPLIT**
+Generate data
 
 ```sh
 dgs gen data \
