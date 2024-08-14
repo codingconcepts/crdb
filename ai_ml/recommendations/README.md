@@ -1,7 +1,7 @@
 ### Prerequisites
 
 * [CockroachDB](https://www.cockroachlabs.com/docs/stable/install-cockroachdb-mac.html) >= v24.2.0
-* [dgs](https://github.com/codingconcepts/dgs)
+* [dgs](https://github.com/codingconcepts/dgs) >= v0.0.7
 
 ### Setup
 
