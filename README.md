@@ -3,6 +3,10 @@ A place for all of my public-facing Cockroach Labs evangelism material
 
 ### Demos
 
+* AI/ML
+  * [RAG](ai_ml/rag/README.md)
+  * [Recommendations](ai_ml/recommendations/README.md)
+
 * Architecture
   * Ranges
     * [Deep Dive](architecture/ranges/deep_dive/README.md)
